@@ -1,5 +1,4 @@
 <h3>Posts</h3>
-<p>List of posts goes here</p>
 
 <% if logged_in? %>
 	<%= link_to 'Log Out', logout_path, method: :delete %>
@@ -7,3 +6,17 @@
 <% else %>
 	<%= link_to "Log In", login_path %>
 <% end %>
+
+<% @posts.each do |p| %>
+<div class="title"><%= p.title %></div>
+<div class="body"><%= p.body %></div>
+<div class="author">
+	<% if logged_in? %>
+		<%= p.user.username %>
+	<% else %>
+		Log in to see who wrote this!
+	<% end %>
+</div>
+</br></br>
+<% end %> 
+
